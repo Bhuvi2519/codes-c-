@@ -1,0 +1,32 @@
+ Stack using array 
+#include <iostream>
+using namespace std;
+
+int main() {
+    char stack[100];
+    int top = -1, choice;
+    char val;
+
+    do {
+        cout << "\nPush=1 Pop=2 Quit=3\nSelect Your choice: ";
+        cin >> choice;
+
+        if (choice == 1) {
+            cout << "Insert the character: ";
+            cin >> val;
+            stack[++top] = val;
+            cout << "After inserting:\n";
+            for (int i = top; i >= 0; i--) cout << stack[i] << endl;
+        } 
+        else if (choice == 2) {
+            if (top == -1) cout << "Stack Underflow\n";
+            else {
+                cout << "Data is popped: " << stack[top--] << endl;
+                cout << "Rest data in stack:\n";
+                for (int i = top; i >= 0; i--) cout << stack[i] << endl;
+            }
+        }
+    } while (choice != 3);
+
+    return 0;
+}
