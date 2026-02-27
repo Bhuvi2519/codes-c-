@@ -1,0 +1,39 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+struct Student {
+    char name[20];
+    int roll, m1, m2, m3, total;
+    float avg;
+};
+
+int main() {
+    int n, choice;
+    cout << "Enter the no of students: "; cin >> n;
+    Student s[n];
+
+    while (true) {
+        cout << "\n1.CREATE\n2.DISPLAY\nEnter ur choice: "; cin >> choice;
+
+        if (choice == 1) {
+            for (int i = 0; i < n; i++) {
+                cout << "Enter Student Name: "; cin >> s[i].name;
+                cout << "Enter RollNo: "; cin >> s[i].roll;
+                cout << "Enter Mark1, Mark2, Mark3: "; 
+                cin >> s[i].m1 >> s[i].m2 >> s[i].m3;
+                s[i].total = s[i].m1 + s[i].m2 + s[i].m3;
+                s[i].avg = s[i].total / 3.0;
+            }
+        } else if (choice == 2) {
+            cout << "\nNAME\tROLLNO\tMARK1\tMARK2\tMARK3\tTOTAL\tAVERAGE\n";
+            for (int i = 0; i < n; i++) {
+                cout << s[i].name << "\t" << s[i].roll << "\t" << s[i].m1 << "\t" 
+                     << s[i].m2 << "\t" << s[i].m3 << "\t" << s[i].total << "\t" << (int)s[i].avg << endl;
+            }
+            cout << "Do u want to continue? Press(1/0): "; cin >> choice;
+            if (choice == 0) break;
+        }
+    }
+    return 0;
+}
