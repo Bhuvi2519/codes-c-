@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int v; Node* n;
+};
+
+void show(Node* h) {
+    cout << "After inserting a node list is as follows:\nAddress\tValue\n";
+    for (; h; h = h->n) cout << h << "\t" << h->v << endl;
+}
+
+int main() {
+    Node *h = 0, *t; char c, b;
+    do {
+        cout << "\nCreate Insertion Display dElete eXit\nSelect UR Choice:"; cin >> c;
+        if (c == 'C' || c == 'I') {
+            do {
+                t = new Node; cout << "Input the node:"; cin >> t->v;
+                t->n = h; h = t; 
+                if (c == 'I') break;
+                cout << "Input Choice n for break:"; cin >> b;
+            } while (b != 'n');
+        } 
+        else if (c == 'D') show(h);
+        else if (c == 'E' && h) { t = h; h = h->n; delete t; }
+    } while (c != 'X');
+    return 0;
+}
