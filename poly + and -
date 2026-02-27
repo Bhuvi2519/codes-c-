@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+struct Poly {
+    int c[4];
+    void in(string s) { cout << "Enter the value for " << s << endl; for(int i=3; i>=0; i--) cin >> c[i]; }
+    void show() { for(int i=3; i>=0; i--) cout << c[i] << "x^" << i << (i>0 ? " + " : "\n"); }
+    Poly operator+(Poly o) { Poly r; for(int i=0; i<4; i++) r.c[i]=c[i]+o.c[i]; return r; }
+    Poly operator-(Poly o) { Poly r; for(int i=0; i<4; i++) r.c[i]=c[i]-o.c[i]; return r; }
+};
+
+int main() {
+    Poly p1, p2; int ch;
+    p1.in("first Poly"); p2.in("Second Poly");
+    do {
+        cout << "\nshow the First Polynomial\n"; p1.show();
+        cout << "show the second Polynomial\n"; p2.show();
+        cout << "\n1.addition of Polynomial\n2.subtraction of Polynomial\n3.Exit\nEnter your choice "; cin >> ch;
+        if(ch==1) { cout << "Show the Add Polynomial "; (p1+p2).show(); }
+        if(ch==2) { cout << "view the Subtraction of two Polynomial "; (p1-p2).show(); }
+    } while(ch != 3);
+    return 0;
+}
